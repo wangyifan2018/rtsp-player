@@ -25,9 +25,17 @@
 ## 2. 后端环境：node express
 
 ### 2.1 安装第三方依赖
-
+首先需要安装nodejs，可以使用apt安装
 ```bash
-npm install express express-ws fluent-ffmpeg websocket-stream -S -D
+sudo apt update
+sudo apt install nodejs build-essential -y
+nodejs --version
+```
+
+然后安装server依赖
+```bash
+cd webserver
+npm install
 ```
 
 ### 2.2 编写代码 index.js
@@ -97,7 +105,8 @@ node index.js
 
 vue的搭建就不赘述了，构建好一个vue项目之后，
 ```bash
-npm install flv.js -S -D
+cd webui
+npm install
 ```
 ### 3.2 编写代码
 > video标签中的muted属性，是因为在视频流加载好之后，autoplay属性无法自动播放，加上这个属性后就可以实现了
@@ -135,19 +144,6 @@ export default {
                     console.log(error);
                 };
             }
-            // if (video) {
-            //     this.player = flvjs.createPlayer({
-            //         type: "flv",
-            //         url: `/static/test.flv`
-            //     });
-            //     this.player.attachMediaElement(video);
-            //     try {
-            //         this.player.load();
-            //         this.player.play();
-            //     } catch (error) {
-            //         console.log(error);
-            //     };
-            // }
         }
     },
     beforeDestroy () {
